@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Calcola Codice Fiscale
+{% endblock %}
+
+{% block body %}
+<br>
+  <h1 style="text-align: center">Calcolo Codice Fiscale</h1>
+
+
+<form action="{{ url_for('calcola') }}" method="post">
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Nome" name="nome" required="required">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Cognome" name="cognome" required="required">
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+        <div class="row">
+          <div class="col">
+            <input class="form-control" id="date" name="date" placeholder="GG/MM/YYYY" type="text" required="required"/>
+          </div>
+        </div>
+    </div>
+    <!--
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Giorno di nascita" name="giorno">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Mese di nascita" name="mese">
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Anno di nascita" name="anno">
+        </div>
+      </div>
+    </div>
+    -->
+    <div class="form-check form-check-inline">
+      Gender:&nbsp;&nbsp;
+      <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="m">
+      <label class="form-check-label" for="inlineRadio1">M</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="f">
+      <label class="form-check-label" for="inlineRadio2">F</label>
+    </div>
+    <br>
+    <div class="form-group" required="required">
+      <input type="text" class="form-control" placeholder="Comune" name="comune">
+    </div>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col">
+          <select class="form-control" id="provincia">
+            <option selected>Provincia...</option>
+            {% for provincia in province %}
+              <option value="{{ provincia.provincia }}">{{ provincia.provincia }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col">
+          <select class="form-control" id="comune">
+            <option selected>Comune...</option>
+            {% for comune in comuni %}
+              <option value="{{ comune }}">{{ comune }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+    </div>
+
+  <br>
+  <div class="form-group"  style="text-align: center">
+      <button class="btn btn-primary">Calcola</button>
+  </div>
+</form>
+<div class="">
+  {{ extra }} {{ even }} {{ odd }} {{ num }}
+</div>
+
+{% endblock %}

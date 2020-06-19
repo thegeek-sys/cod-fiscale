@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+<br><br>
+    <div class="row">
+        <div class="col-sm"></div>
+<div class="col-sm">
+  <div class="alert alert-success" role="alert" style="display: {{ display_success }}">
+  User {{ message_success }} successfully registered!
+  </div>
+
+  <div class="alert alert-primary" role="alert" style="display: {{ logout }}">
+    User successfully logged out!
+  </div>
+
+ <div class="alert alert-danger" role="alert" style="display: {{ display_error }}">
+  {{ message_error }}
+</div>
+  <h1 style="text-align: center">Login</h1>
+
+  <form action="{{ url_for('validation') }}" method="post"> <!-- fill infos -->
+
+  <div class="form-group">
+      <input class="form-control" name="user-login" placeholder="Username" required="required">
+  </div>
+  <div class="form-group">
+      <input class="form-control" name="pwd-login" placeholder="Password" required="required" type="password">
+  </div>
+  <div class="form-group"  style="text-align: center">
+      <button class="btn btn-primary">Login</button>
+  </div>
+
+</form>
+<div class="">
+  New? <a href="{{ url_for('index') }}">Register</a>
+</div>
+</div>
+<div class="col-sm"></div>
+</div>
+
+{% endblock %}
